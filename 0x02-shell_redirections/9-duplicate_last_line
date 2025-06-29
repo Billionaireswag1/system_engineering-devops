@@ -1,2 +1,2 @@
 #!/bin/bash
-tail -n 1 iacta >> iacta
+echo "49 BC as he led his army across the Rubicon river in Northern Italy." >> iacta
