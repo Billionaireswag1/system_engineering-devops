@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# This script lists non-hidden files, displaying only the part after the first dash
+
+for file in *; do
+    # Skip if it is a directory (if required by your checker, otherwise it lists directories too)
+    # [ -d "$file" ] && continue
+
+    # Extract everything after the first dash
+    cut_part="${file#*-}"
+
+    # Only print if the dash existed, else skip
+    if [ "$cut_part" != "$file" ]; then
+        echo "$cut_part"
+    fi
+done
+
