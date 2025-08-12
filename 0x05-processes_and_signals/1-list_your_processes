@@ -3,14 +3,24 @@
 
 echo "USER"
 
-for pid in /proc/[0-9]*; do
-    pid=${pid##*/}  # get PID number
-    if [[ ! "$pid" =~ ^[0-9]+$ ]]; then
-        continue
-    fi
+declare -A users_seen
 
-    user=$(ps -o user= -p "$pid" 2>/dev/null)
-    if [[ -n $user ]]; then
-        echo "$user"
+for pid_dir in /proc/[0-9]*; do
+    pid=${pid_dir##*/}
+
+    # Skip non-numeric just in case (probably not needed)
+    [[ "$pid" =~ ^[0-9]+$ ]] || continue
+
+    # Read UID from /proc/[pid]/status file
+    if [[ -r "/proc/$pid/status" ]]; then
+        uid_line=$(grep -s '^Uid:' "/proc/$pid/status")
+        # Extract real UID (second field)
+        uid=$(echo "$uid_line" | awk '{print $2}')
+        # Convert UID to username
+        user=$(getent passwd "$uid" | cut -d: -f1)
+        if [[ -n "$user" && -z "${users_seen[$user]}" ]]; then
+            users_seen[$user]=1
+            echo "$user"
+        fi
     fi
-done | sort | uniq
+done
