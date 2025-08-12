@@ -1,10 +1,5 @@
-#!/usr/bin/env bash
-# A Bash script that does nothing and outputs nothing
+#!/bin/bash
+# Script: 1-list_your_processes
+# Purpose: Display all processes (including those without a TTY) in a user-oriented format with hierarchy
 
-
-
-
-
-
-
-
+ps -eo user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,command --forest
