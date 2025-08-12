@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# Display all running processes in a user-friendly format with hierarchy
+# Display all running processes for all users with only USER and COMMAND columns in a hierarchy
 
 ps -eo user,command --forest
