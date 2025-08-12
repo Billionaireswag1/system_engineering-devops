@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 # Display all running processes for all users with only USER and COMMAND columns in a hierarchy
 
-ps -eo user,command --forest
+echo "USER   COMMAND"
+ps -eo user:20,command --forest --no-headers
