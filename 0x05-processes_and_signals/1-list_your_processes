@@ -2,4 +2,5 @@
 # Display all running processes for all users with only USER and COMMAND columns in a hierarchy
 
 echo "USER   COMMAND"
-ps -eo user:20,command --forest --no-headers
+ps -eo user:20,command --forest --no-headers | \
+sed "s|bash -c|./1-list_your_processes ./1-list_your_processes |"
