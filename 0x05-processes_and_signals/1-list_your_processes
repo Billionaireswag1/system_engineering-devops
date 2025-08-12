@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# A Bash script that displays all running processes with headers 'USER STARTED CMD' and start time including seconds
+# A Bash script that displays the usernames of all running processes
 
-ps -eo user:10,lstart:25,cmd --forest | awk 'NR==1 {$2="STARTED"}1'
+ps -eo user --no-headers
