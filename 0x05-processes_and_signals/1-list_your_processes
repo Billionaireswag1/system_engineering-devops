@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-# A Bash script that intentionally produces no output
+# A Bash script that does nothing and outputs nothing
