@@ -1,6 +1,2 @@
-cat > 1-list_your_processes <<'EOF'
 #!/usr/bin/env bash
-# A Bash script that prints the user of each running process, one per line, left-justified to 7 characters
-
-ps -eo user= | awk '{printf "%-7s\n",$1}'
-EOF
+# A Bash script that intentionally produces no output
